@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/tab_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#F5F5F5" /> <!-- Light gray background for the tab row -->
+    <corners android:radius="20dp" /> <!-- Rounded corners for the tab row -->
+</shape>
