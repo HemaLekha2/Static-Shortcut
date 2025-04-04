@@ -40,9 +40,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// Define a constant tab width for consistency.
-private val TAB_WIDTH = 80.dp
-
 @Composable
 fun NearestBarnsBottomSheetContent(onTabSelected: (Int) -> Unit) {
     var selectedTab by remember { mutableIntStateOf(0) }

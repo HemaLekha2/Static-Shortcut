@@ -1,5 +1,6 @@
 package com.example.staticshortcut
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -15,23 +16,46 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.staticshortcut.screen.HomeScreen
 
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Get the data from the shortcut intent.
+        // The shortcuts XML uses android:data like "app://nearest_barns" or "app://home".
+        val shortcutData = intent?.data?.toString()
+
+        // Pass the shortcutData to your Compose UI.
         setContent {
-            MainScreen()
+            MainScreen(shortcutData = shortcutData)
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        // If the app is already running and a new shortcut is pressed,
+        // you could update your UI here by calling setContent or using a state holder.
     }
 }
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
+fun MainScreen(shortcutData: String? = null) {
     val navController = rememberNavController()
     val bottomSheetState = rememberModalBottomSheetState()
     var showBottomSheet by remember { mutableStateOf(false) }
+
+    // Check the shortcut data once on composition start.
+    LaunchedEffect(shortcutData) {
+        // If the shortcut data indicates nearest barns, open the bottom sheet.
+        if (shortcutData == "app://nearest_barns") {
+            showBottomSheet = true
+        }
+        // If the shortcut is "home" or null, do nothing special
+        // since the Home Screen is already the default.
+    }
 
     Scaffold { paddingValues ->
         Column(
@@ -45,10 +69,10 @@ fun MainScreen() {
                 Text("Show Bottom Sheet")
             }
 
-            // Navigation Host
+            // Navigation Host (Home Screen)
             NavHost(navController = navController, startDestination = "home") {
                 composable("home") {
-                    Text("Home Screen", modifier = Modifier.padding(top = 16.dp))
+                    HomeScreen() // See next step for a simple home screen
                 }
             }
         }
@@ -62,10 +86,12 @@ fun MainScreen() {
             ) {
                 NearestBarnsBottomSheetContent(
                     onTabSelected = { tabIndex ->
-                        // Handle tab selection if needed
+                        // Handle tab selection if needed.
                     }
                 )
             }
         }
     }
 }
+
+

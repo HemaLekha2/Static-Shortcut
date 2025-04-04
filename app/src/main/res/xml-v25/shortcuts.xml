@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Shortcut for Nearest Locations -->
+    <shortcut
+        android:shortcutId="nearest_barns"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_nearest_barns_short"
+        android:shortcutLongLabel="@string/shortcut_nearest_barns_long"
+        android:shortcutDisabledMessage="@string/shortcut_nearest_barns_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.staticshortcut"
+            android:targetClass="com.example.staticshortcut.MainActivity"
+            android:data="app://nearest_barns" />
+    </shortcut>
+
+    <!-- Shortcut for Home -->
+    <shortcut
+        android:shortcutId="home"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher"
+        android:shortcutShortLabel="@string/shortcut_home_short"
+        android:shortcutLongLabel="@string/shortcut_home_long"
+        android:shortcutDisabledMessage="@string/shortcut_home_disabled">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:targetPackage="com.example.staticshortcut"
+            android:targetClass="com.example.staticshortcut.MainActivity"
+            android:data="app://home" />
+    </shortcut>
+
+</shortcuts>

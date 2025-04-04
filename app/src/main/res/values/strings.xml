@@ -12,6 +12,15 @@
     <string name="barn_name_2">Windy Mane Ranch</string>
     <string name="barn_address_2">14265 Chaparral Lane, Roanoke, TX 76262, United States</string>
 
+    <string name="shortcut_nearest_barns_short">Barns</string>
+    <string name="shortcut_nearest_barns_long">View Nearest Barns</string>
+    <string name="shortcut_nearest_barns_disabled">Feature is disabled</string>
+
+    <string name="shortcut_home_short">Home</string>
+    <string name="shortcut_home_long">Go to Home</string>
+    <string name="shortcut_home_disabled">Home feature is disabled</string>
+
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
